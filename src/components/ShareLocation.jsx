@@ -25,6 +25,7 @@ const StyledElement = styled.button`
 `;
 const StyledItem = styled.button`
    align-items: center;
+   background-color: ${prop => prop?.color};
    border-radius: 50%;
    border: none;
    color: #ffffff;
@@ -36,9 +37,35 @@ const StyledItem = styled.button`
    position: absolute;
    top: -22px;
    width: 44px;
+   &:hover::before {
+      clip-path: polygon(
+         0% 0%,
+         0% 100%,
+         100% 100%,
+         50% 50%,
+         100% 100%,
+         100% 0%,
+         0% 0%
+      );
+      transform: rotate(270deg);
+   }
+   &::before {
+      background-color: transparent;
+      border-radius: 50%;
+      border: 2px solid ${prop => prop?.color};
+      clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 50% 50%, 0% 0%, 0% 0%, 0% 0%);
+      content: '';
+      height: 48px;
+      left: -4px;
+      position: absolute;
+      top: -4px;
+      transition: 500ms;
+      width: 48px;
+   }
 `;
 const Telegram = ({ setOpen, color }) => (
    <StyledItem
+      color={color}
       onClick={() => {
          setOpen(false);
          window.open(
@@ -46,7 +73,6 @@ const Telegram = ({ setOpen, color }) => (
             '_blank'
          );
       }}
-      style={{ backgroundColor: color }}
    >
       <svg
          enableBackground='new 0 0 100 100'
@@ -64,6 +90,7 @@ const Telegram = ({ setOpen, color }) => (
 Telegram.propTypes = propTypes;
 const Facebook = ({ setOpen, color }) => (
    <StyledItem
+      color={color}
       onClick={() => {
          setOpen(false);
          window.open(
@@ -71,7 +98,6 @@ const Facebook = ({ setOpen, color }) => (
             '_blank'
          );
       }}
-      style={{ backgroundColor: color }}
    >
       <svg width='24' height='24' viewBox='88.428 12.828 107.543 207.085'>
          <path
@@ -84,6 +110,7 @@ const Facebook = ({ setOpen, color }) => (
 Facebook.propTypes = propTypes;
 const Email = ({ setOpen, color }) => (
    <StyledItem
+      color={color}
       onClick={() => {
          setOpen(false);
          window.open(
@@ -91,7 +118,6 @@ const Email = ({ setOpen, color }) => (
             '_blank'
          );
       }}
-      style={{ backgroundColor: color }}
    >
       <svg height='22' viewBox='0 0 24 24' width='22'>
          <path fill='none' d='M0 0h24v24H0V0z'></path>
@@ -123,11 +149,11 @@ const Copy = ({ setOpen, color }) => {
    };
    return (
       <StyledItem
+         color={color}
          onClick={() => {
             setOpen(false);
             copyToClipboard(window.location.href);
          }}
-         style={{ backgroundColor: color }}
       >
          <svg height='25' viewBox='0 0 16 16' width='25'>
             <path
@@ -141,6 +167,7 @@ const Copy = ({ setOpen, color }) => {
 Copy.propTypes = propTypes;
 const Linkedin = ({ setOpen, color }) => (
    <StyledItem
+      color={color}
       onClick={() => {
          setOpen(false);
          window.open(
@@ -148,7 +175,6 @@ const Linkedin = ({ setOpen, color }) => (
             '_blank'
          );
       }}
-      style={{ backgroundColor: color }}
    >
       <svg width='22' height='22' viewBox='0 0 1036 990'>
          <path

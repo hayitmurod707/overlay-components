@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import styled from 'styled-components';
+import ContactUs from './components/ContactUs';
 import Modal from './components/Modal';
 import Notifications from './components/Notifications';
 import notification from './components/Notifications/notification';
@@ -78,6 +79,7 @@ const App = () => {
    const [visible, setVisible] = useState(false);
    return (
       <Fragment>
+         <ContactUs />
          <StyledHeader>
             <h1>Overlay components</h1>
             <p>Overlay components for react application</p>
