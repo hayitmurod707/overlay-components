@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Modal from './components/Modal';
 import Notifications from './components/Notifications';
 import notification from './components/Notifications/notification';
+import ShareLocation from './components/ShareLocation';
 const StyledHeader = styled.div`
    align-items: center;
    display: flex;
@@ -60,6 +61,19 @@ const Notification = styled.div`
       }
    }
 `;
+const StyledShare = styled.div`
+   & .title {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 24px 0;
+      text-align: center;
+   }
+   & .content {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+   }
+`;
 const App = () => {
    const [visible, setVisible] = useState(false);
    return (
@@ -77,6 +91,12 @@ const App = () => {
                </a>
             </p>
          </StyledHeader>
+         <StyledShare>
+            <h2 className='title'>Share</h2>
+            <div className='content'>
+               <ShareLocation />
+            </div>
+         </StyledShare>
          <Notification>
             <h2 className='title'>Modal</h2>
             <div className='row'>
