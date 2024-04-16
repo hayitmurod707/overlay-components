@@ -1,5 +1,6 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import styled from 'styled-components';
+import Modal from './components/Modal';
 import Notifications from './components/Notifications';
 import notification from './components/Notifications/notification';
 const StyledHeader = styled.div`
@@ -60,6 +61,7 @@ const Notification = styled.div`
    }
 `;
 const App = () => {
+   const [visible, setVisible] = useState(false);
    return (
       <Fragment>
          <StyledHeader>
@@ -75,6 +77,35 @@ const App = () => {
                </a>
             </p>
          </StyledHeader>
+         <Notification>
+            <h2 className='title'>Modal</h2>
+            <div className='row'>
+               <button
+                  onClick={() => {
+                     setVisible(true);
+                  }}
+                  style={{ backgroundColor: '#0163f7' }}
+               >
+                  Open
+               </button>
+            </div>
+            <Modal
+               visible={visible}
+               onClose={() => {
+                  setVisible(false);
+               }}
+               onOpen={() => {
+                  setVisible(true);
+               }}
+            >
+               <h1>Hello Modal</h1>
+               <h1>Hello Modal</h1>
+               <h1>Hello Modal</h1>
+               <h1>Hello Modal</h1>
+               <h1>Hello Modal</h1>
+               <h1>Hello Modal</h1>
+            </Modal>
+         </Notification>
          <Notification>
             <Notifications />
             <h2 className='title'>Notifications</h2>
