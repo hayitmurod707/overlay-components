@@ -353,7 +353,7 @@ const ContactUs = () => {
             <div className='social'>
                <a
                   data-open={open}
-                  href='mailto:recruitment@asakabank.uz'
+                  href='mailto:example@gmail.com'
                   rel='noopener noreferrer'
                   onClick={() => {
                      setOpen(false);
@@ -363,7 +363,7 @@ const ContactUs = () => {
                </a>
                <a
                   data-open={open}
-                  href='tel:1152'
+                  href='tel:123456789'
                   rel='noopener noreferrer'
                   onClick={() => {
                      setOpen(false);

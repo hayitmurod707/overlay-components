@@ -77,17 +77,9 @@ const Modal = ({
       {...defaultOptions}
       contentStyle={{ maxWidth }}
       disabled={isDisabled}
+      onClose={onClose}
+      onOpen={onOpen}
       open={visible}
-      onClose={() => {
-         if (!isDisabled) {
-            onClose();
-         }
-      }}
-      onOpen={() => {
-         if (!isDisabled) {
-            onOpen();
-         }
-      }}
    >
       {children}
       {!isDisabled && (
