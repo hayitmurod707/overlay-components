@@ -1,7 +1,5 @@
-import Modal from 'components/Modal';
-import Notifications from 'components/Notifications';
+import { Modal, Notifications, Tooltip } from 'components';
 import notification from 'components/Notifications/notification';
-import Tooltip from 'components/Tooltip';
 import { Fragment, useState } from 'react';
 import styled from 'styled-components';
 const StyledHeader = styled.div`
