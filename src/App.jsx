@@ -1,10 +1,9 @@
+import Modal from 'components/Modal';
+import Notifications from 'components/Notifications';
+import notification from 'components/Notifications/notification';
+import Tooltip from 'components/Tooltip';
 import { Fragment, useState } from 'react';
 import styled from 'styled-components';
-import ContactUs from './components/ContactUs';
-import Modal from './components/Modal';
-import Notifications from './components/Notifications';
-import notification from './components/Notifications/notification';
-import ShareLocation from './components/ShareLocation';
 const StyledHeader = styled.div`
    align-items: center;
    display: flex;
@@ -62,24 +61,10 @@ const Notification = styled.div`
       }
    }
 `;
-const StyledShare = styled.div`
-   & .title {
-      font-size: 28px;
-      font-weight: 600;
-      margin: 24px 0;
-      text-align: center;
-   }
-   & .content {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-   }
-`;
 const App = () => {
    const [visible, setVisible] = useState(false);
    return (
       <Fragment>
-         <ContactUs />
          <StyledHeader>
             <h1>Overlay components</h1>
             <p>Overlay components for react application</p>
@@ -93,26 +78,22 @@ const App = () => {
                </a>
             </p>
          </StyledHeader>
-         <StyledShare>
-            <h2 className='title'>Share</h2>
-            <div className='content'>
-               <ShareLocation />
-            </div>
-         </StyledShare>
          <Notification>
             <h2 className='title'>Modal</h2>
             <div className='row'>
-               <button
-                  onClick={() => {
-                     setVisible(true);
-                  }}
-                  style={{ backgroundColor: '#0163f7' }}
-               >
-                  Open
-               </button>
+               <Tooltip title='Hello'>
+                  <button
+                     style={{ backgroundColor: '#0163f7' }}
+                     onClick={() => {
+                        setVisible(true);
+                     }}
+                  >
+                     Open
+                  </button>
+               </Tooltip>
             </div>
             <Modal
-               visible={visible}
+               open={visible}
                onClose={() => {
                   setVisible(false);
                }}
@@ -120,12 +101,14 @@ const App = () => {
                   setVisible(true);
                }}
             >
-               <h1>Hello Modal</h1>
-               <h1>Hello Modal</h1>
-               <h1>Hello Modal</h1>
-               <h1>Hello Modal</h1>
-               <h1>Hello Modal</h1>
-               <h1>Hello Modal</h1>
+               <div>
+                  <h1>Hello Modal</h1>
+                  <h1>Hello Modal</h1>
+                  <h1>Hello Modal</h1>
+                  <h1>Hello Modal</h1>
+                  <h1>Hello Modal</h1>
+                  <h1>Hello Modal</h1>
+               </div>
             </Modal>
          </Notification>
          <Notification>
@@ -134,7 +117,12 @@ const App = () => {
             <div className='row'>
                <button
                   style={{ backgroundColor: '#0163f7' }}
-                  onClick={() => notification('Info message', { type: 'info' })}
+                  onClick={() =>
+                     notification('Info message', {
+                        autoClose: false,
+                        type: 'info',
+                     })
+                  }
                >
                   Info
                </button>
@@ -154,7 +142,10 @@ const App = () => {
                <button
                   style={{ backgroundColor: '#ff3b3c' }}
                   onClick={() =>
-                     notification('Error message', { type: 'error' })
+                     notification('Error message', {
+                        autoClose: false,
+                        type: 'error',
+                     })
                   }
                >
                   Error
@@ -176,6 +167,7 @@ const App = () => {
                   style={{ backgroundColor: '#feda04' }}
                   onClick={() =>
                      notification('Warning message', {
+                        autoClose: false,
                         type: 'warning',
                      })
                   }
@@ -199,6 +191,7 @@ const App = () => {
                   style={{ backgroundColor: '#3bc148' }}
                   onClick={() =>
                      notification('Success message', {
+                        autoClose: false,
                         type: 'success',
                      })
                   }
@@ -222,6 +215,7 @@ const App = () => {
                   style={{ backgroundColor: '#a1a1aa' }}
                   onClick={() =>
                      notification('Default message', {
+                        autoClose: false,
                         type: 'default',
                      })
                   }
